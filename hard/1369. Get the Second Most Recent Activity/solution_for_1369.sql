@@ -12,8 +12,6 @@ cte2 as(
         *,
         count(activity) over(
             partition by username
-            order by
-                startdate
         ) as cnt,
         row_number() over(
             partition by username
