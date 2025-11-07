@@ -1,4 +1,15 @@
-The Employee table holds all employees. The employee table has three columns: Employee Id, Company Name, and Salary.
+Table: Employee
+
++--------------+---------+
+| Column Name  | Type    |
++--------------+---------+
+| id           | int     |
+| company      | varchar |
+| salary       | int     |
++--------------+---------+
+id is the primary key (column with unique values) for this table.
+Each row of this table indicates the company and the salary of one employee.
+
 
 +-----+------------+--------+
 |Id   | Company    | Salary |
@@ -22,7 +33,12 @@ The Employee table holds all employees. The employee table has three columns: Em
 |17   | C          | 65     |
 +-----+------------+--------+
 
-Write a SQL query to find the median salary of each company. Bonus points if you can solve it without using any built-in SQL functions.
+Write a solution to find the rows that contain the median salary of each company. While calculating the median, when you sort the salaries of the company, break the ties by id.
+
+
+Return the result table in any order.
+
+The result format is in the following .
 
 +-----+------------+--------+
 |Id   | Company    | Salary |
