@@ -8,8 +8,7 @@ with CTE as (
         ) as cum_sum
     from
         Candidates
-),
-with juniors as (
+)
     select
         'Senior' as experience, IFNULL(count(*) as accepted_candidates, 0)
     from
