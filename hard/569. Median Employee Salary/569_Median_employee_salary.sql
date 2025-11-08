@@ -1,7 +1,7 @@
 with cte as (
     select
         *,
-        rown_number() over( partition by company order by salary asc ) as rnk,
+        row_number() over( partition by company order by salary asc ) as rnk,
         count(*) over(partition by Company) as cnt
     from
         Employee
