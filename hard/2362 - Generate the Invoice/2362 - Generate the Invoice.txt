@@ -1,0 +1,63 @@
+Description
+Table: Products
+
++-------------+------+
+| Column Name | Type |
++-------------+------+
+| product_id  | int  |
+| price       | int  |
++-------------+------+
+product_id is the primary key for this table.
+Each row in this table shows the ID of a product and the price of one unit.
+ 
+
+Table: Purchases
+
++-------------+------+
+| Column Name | Type |
++-------------+------+
+| invoice_id  | int  |
+| product_id  | int  |
+| quantity    | int  |
++-------------+------+
+(invoice_id, product_id) is the primary key for this table.
+Each row in this table shows the quantity ordered from one product in an invoice. 
+
+ 
+
+Write an SQL query to show the details of the invoice with the highest price.
+ If two or more invoices have the same price, return the details of the one with the smallest invoice_id.
+
+Return the result table in any order.
+
+The query result format is shown in the following example.
+
+ 
+
+Example 1:
+
+Input: 
+Products table:
++------------+-------+
+| product_id | price |
++------------+-------+
+| 1          | 100   |
+| 2          | 200   |
++------------+-------+
+Purchases table:
++------------+------------+----------+
+| invoice_id | product_id | quantity |
++------------+------------+----------+
+| 1          | 1          | 2        |
+| 3          | 2          | 1        |
+| 2          | 2          | 3        |
+| 2          | 1          | 4        |
+| 4          | 1          | 10       |
++------------+------------+----------+
+Output: 
++------------+----------+-------+
+| product_id | quantity | price |
++------------+----------+-------+
+| 2          | 3        | 600   |
+| 1          | 4        | 400   |
++------------+----------+-------+
