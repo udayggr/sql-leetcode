@@ -1,19 +1,30 @@
-with cte as(select
-l1.user_id as user1_id, l2.user_id as user2_id
-from 
-Listens l1
-left join
-listens l2
-on l1.song_id = l2.song_id
-and l1.day=l2.day
-group by l.day,l.user_id,l2.user_id
-having count(distinct l2.song_id > 2))
+with cte as(
+    select
+        l1.user_id as user1_id,
+        l2.user_id as user2_id
+    from
+        Listens l1
+        left join listens l2 on l1.song_id = l2.song_id
+        and l1.day = l2.day
+    group by
+        l.day,
+        l.user_id,
+        l2.user_id
+    having
+        count(distinct l2.song_id > 2)
+)
 select
-
-select c.user1_id as user_id,c.user2_id as recomended_id
-from cte c  left join friendship f
-on (c.user1_id=f.user1_id and c.user2_id=f.user2_id)
-or (c.user2_id=f.user1_id and c.user1_id=f.user2_id)
-where c.user1_id  is  null
-
-
+    c.user1_id as user_id,
+    c.user2_id as recomended_id
+from
+    cte c
+    left join friendship f on (
+        c.user1_id = f.user1_id
+        and c.user2_id = f.user2_id
+    )
+    or (
+        c.user2_id = f.user1_id
+        and c.user1_id = f.user2_id
+    )
+where
+    c.user1_id is null
