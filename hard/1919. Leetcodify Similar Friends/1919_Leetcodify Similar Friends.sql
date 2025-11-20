@@ -18,13 +18,13 @@ select
     c.user2_id as recomended_id
 from
     cte c
-    left join friendship f on (
+    left join friendship f on ((
         c.user1_id = f.user1_id
         and c.user2_id = f.user2_id
     )
     or (
         c.user2_id = f.user1_id
         and c.user1_id = f.user2_id
-    )
+    ))
 where
     c.user1_id is null
