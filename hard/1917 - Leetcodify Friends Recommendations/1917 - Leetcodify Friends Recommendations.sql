@@ -14,15 +14,19 @@ with cte as(
         count(distinct l2.song_id > 2)
 )
 select
-c.user1_id as user1_id,
-c.user2_id as user2_id
+    distinct c.user1_id as user_id,
+    c.user2_id as recommended_id
 from
     cte c
-where
-    (user1_id, user2_id) in (
-        select
-            *
-        from
-            friendship
+    left join Friendship f on (
+        (
+            c.user1_id = f.user1_id
+            and c.user2_id = f.user2_id
+        )
+        or (
+            c.user1_id = f.user2_id
+            and c.user2_id = f.user1_id
+        )
     )
-    and user1_id < user2_id
+where
+    f.user1_id is null
