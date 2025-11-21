@@ -18,6 +18,7 @@ with recurrsive cte as (
 select
     employee_id as subordinate_id,
     employee_name as subordinate_name,
+    hierarchy_level,
     salary -(
         select
             salary

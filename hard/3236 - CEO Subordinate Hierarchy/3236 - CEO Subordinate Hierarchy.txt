@@ -48,7 +48,8 @@ Employees table:
  | 8            | Helen           | 5           | 90000    |
 +-++
 Output:
-
++-+++-+
+subordinate_id    |subordinate_name    |hierarchy_level    | salary_difference  |
 +-+++-+
  | 2               | Bob               | 1                 | -30000             |
  | 3               | Charlie           | 1                 | -40000             |
